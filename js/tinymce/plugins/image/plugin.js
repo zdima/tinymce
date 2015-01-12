@@ -85,6 +85,7 @@ tinymce.PluginManager.add('image', function(editor) {
 	function showDialog(imageList) {
 		var win, data = {}, dom = editor.dom, imgElm = editor.selection.getNode();
 		var width, height, imageListCtrl, classListCtrl, imageDimensions = editor.settings.image_dimensions !== false;
+		var bAR1Enabled, bAR1onclick;
 
 		function recalcSize() {
 			var widthCtrl, heightCtrl, newWidth, newHeight;
@@ -159,6 +160,23 @@ tinymce.PluginManager.add('image', function(editor) {
 				data.style = null;
 			}
 
+			var embedInTable = data.ar1table;
+			var needOnClick = data.ar1onclick;
+			var fullImage = data.src.replace("_150.", ".").replace(/\.ashx.*$/, "");
+
+			// strip image _150 size and replace with .ashx
+			if (needOnClick && data.src) {
+				if (data.width === '') {
+					data.src = fullImage + ".ashx?width=150";
+				} else {
+					data.src = fullImage + ".ashx?width=" + removePixelSuffix(data.width);
+				}
+			} else {
+				if (data.width !== '') {
+					data.src = fullImage + ".ashx?width=" + removePixelSuffix(data.width);
+				}
+			}
+
 			// Setup new data excluding style properties
 			data = {
 				src: data.src,
@@ -168,6 +186,14 @@ tinymce.PluginManager.add('image', function(editor) {
 				style: data.style,
 				"class": data["class"]
 			};
+
+			// if ar1onclick is true, add to image onclock event
+			if (needOnClick) {
+				data.style = "cursor:pointer";
+				data.mce_onclick = "window.open('" + fullImage + "', '_self' );";
+			} else {
+				data.mce_onclick = '';
+			}
 
 			editor.undoManager.transact(function() {
 				if (!data.src) {
@@ -180,7 +206,44 @@ tinymce.PluginManager.add('image', function(editor) {
 					return;
 				}
 
-				if (!imgElm) {
+				// if ar1table is true, embed into table
+				if (embedInTable) {
+					var imgTable = dom.create('table', {
+						id: '__mcenew',
+						"class":"picturecaption",
+						border:0,
+						cellSpacing:0,
+						cellPadding:0,
+						borderColor:'black',
+						bgColor:'black',
+						width:150
+					});
+					var imgTableBody = dom.add(imgTable, 'tbody');
+					var imgTableTr = dom.add(imgTableBody, 'tr');
+					var imgTableTd = dom.add(imgTableTr, 'td');
+
+					var image_data = data;
+					image_data = tinymce.extend(image_data, {
+						src: data.src + ".ashx?width=150",
+						border:0,
+						hspace:0,
+						width:150
+					});
+
+					dom.add(imgTableTd, 'img', image_data);
+
+					if (data.alt === '') {
+						data.alt = 'text';
+					}
+
+					imgTableTr = dom.add(imgTableBody, 'tr');
+					imgTableTd = dom.add(imgTableTr, 'td', {}, data.alt);
+
+					editor.focus();
+					editor.selection.setContent(dom.getOuterHTML(imgTable));
+					imgElm = dom.get('__mcenew');
+					dom.setAttrib(imgElm, 'id', null);
+				} else if (!imgElm) {
 					data.id = '__mcenew';
 					editor.focus();
 					editor.selection.setContent(dom.createHTML('img', data));
@@ -215,7 +278,7 @@ tinymce.PluginManager.add('image', function(editor) {
 
 			if (!meta.width && !meta.height) {
 				var srcURL = this.value(),
-				absoluteURLPattern = new RegExp('^(?:[a-z]+:)?//', 'i'),
+				absoluteURLPattern = new RegExp('^(?:[a-z]+:)?/', 'i'),
 				baseURL = editor.settings.document_base_url;
 
 				//Pattern test the src url and make sure we haven't already prepended the url
@@ -240,14 +303,19 @@ tinymce.PluginManager.add('image', function(editor) {
 
 		if (imgElm.nodeName == 'IMG' && !imgElm.getAttribute('data-mce-object') && !imgElm.getAttribute('data-mce-placeholder')) {
 			data = {
-				src: dom.getAttrib(imgElm, 'src'),
+				src: dom.getAttrib(imgElm, 'src').replace(".ashx?width=150", ""),
 				alt: dom.getAttrib(imgElm, 'alt'),
 				"class": dom.getAttrib(imgElm, 'class'),
 				width: width,
 				height: height
 			};
+			bAR1Enabled = false;
+			var mce_onclick = dom.getAttrib(imgElm, 'mce_onclick');
+			bAR1onclick = (mce_onclick !== null && mce_onclick !== '');
 		} else {
 			imgElm = null;
+			bAR1Enabled = true;
+			bAR1onclick = true;
 		}
 
 		if (imageList) {
@@ -489,6 +557,37 @@ tinymce.PluginManager.add('image', function(editor) {
 									{label: 'Vertical space', name: 'vspace'},
 									{label: 'Horizontal space', name: 'hspace'},
 									{label: 'Border', name: 'border'}
+								]
+							}
+						]
+					},
+
+					{
+						title: 'AR1',
+						type: 'form',
+						pack: 'start',
+						items: [
+							{
+								name: 'ar1table',
+								type: 'checkbox',
+								checked: bAR1Enabled,
+								disabled: !bAR1Enabled,
+								text: 'Embed into table'
+							},
+							{
+								type: 'form',
+								layout: 'grid',
+								packV: 'start',
+								columns: 2,
+								padding: 0,
+								alignH: ['left', 'right'],
+								items: [
+									{
+										name: 'ar1onclick',
+										type: 'checkbox',
+										checked: bAR1onclick,
+										text: 'Open on click'
+									}
 								]
 							}
 						]
