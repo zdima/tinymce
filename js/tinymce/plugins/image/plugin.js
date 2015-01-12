@@ -67,14 +67,14 @@ tinymce.PluginManager.add('image', function(editor) {
 		return function() {
 			var imageList = editor.settings.image_list;
 
-			if (typeof(imageList) == "string") {
+			if (typeof imageList == "string") {
 				tinymce.util.XHR.send({
 					url: imageList,
 					success: function(text) {
 						callback(tinymce.util.JSON.parse(text));
 					}
 				});
-			} else if (typeof(imageList) == "function") {
+			} else if (typeof imageList == "function") {
 				imageList(callback);
 			} else {
 				callback(imageList);
@@ -103,10 +103,16 @@ tinymce.PluginManager.add('image', function(editor) {
 			if (win.find('#constrain')[0].checked() && width && height && newWidth && newHeight) {
 				if (width != newWidth) {
 					newHeight = Math.round((newWidth / width) * newHeight);
-					heightCtrl.value(newHeight);
+
+					if (!isNaN(newHeight)) {
+						heightCtrl.value(newHeight);
+					}
 				} else {
 					newWidth = Math.round((newHeight / height) * newWidth);
-					widthCtrl.value(newWidth);
+
+					if (!isNaN(newWidth)) {
+						widthCtrl.value(newWidth);
+					}
 				}
 			}
 
@@ -178,6 +184,7 @@ tinymce.PluginManager.add('image', function(editor) {
 			}
 
 			// Setup new data excluding style properties
+			/*eslint dot-notation: 0*/
 			data = {
 				src: data.src,
 				alt: data.alt,
@@ -480,7 +487,7 @@ tinymce.PluginManager.add('image', function(editor) {
 			css = mergeMargins(css);
 
 			//Move opposite equal margins to vspace/hspace field
-			if ((css['margin-top'] && css['margin-bottom']) ||  (css['margin-right'] && css['margin-left'])) {
+			if ((css['margin-top'] && css['margin-bottom']) || (css['margin-right'] && css['margin-left'])) {
 				if (css['margin-top'] === css['margin-bottom']) {
 					win.find('#vspace').value(removePixelSuffix(css['margin-top']));
 				} else {
