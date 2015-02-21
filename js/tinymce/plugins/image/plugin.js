@@ -86,6 +86,11 @@ tinymce.PluginManager.add('image', function(editor) {
 		var win, data = {}, dom = editor.dom, imgElm = editor.selection.getNode();
 		var width, height, imageListCtrl, classListCtrl, imageDimensions = editor.settings.image_dimensions !== false;
 		var bAR1Enabled, bAR1onclick;
+		var imageAlignment = editor.settings.image_alignment;
+
+		if (!editor.settings.image_advtab) {
+			imageAlignment = false;
+		}
 
 		function recalcSize() {
 			var widthCtrl, heightCtrl, newWidth, newHeight;
@@ -171,6 +176,8 @@ tinymce.PluginManager.add('image', function(editor) {
 			var tblAlign = data.tblAlign;
 			var fullImage = data.src.replace(/\.ashx.*$/, "").replace("_" + removePixelSuffix(data.width) + ".", ".");
 
+			var imageAlign = data.align;
+
 			//// strip image _150 size and replace with .ashx
 			//if (needOnClick && data.src) {
 			//	fullImage = fullImage.replace("_150.", ".");
@@ -191,6 +198,16 @@ tinymce.PluginManager.add('image', function(editor) {
 				style: data.style,
 				"class": data["class"]
 			};
+
+			if (imageAlignment && imageAlign !== null) {
+				if (imageAlign !== "") {
+					if (data.style !== null) {
+						data.style = "float:" + imageAlign + ";" + data.style;
+					} else {
+						data.style = "float:" + imageAlign;
+					}
+				}
+			}
 
 			// if ar1onclick is true, add to image onclock event
 			if (needOnClick) {
@@ -410,6 +427,20 @@ tinymce.PluginManager.add('image', function(editor) {
 				]
 			});
 		}
+		if (imageAlignment) {
+			generalFormItems.push({
+				label: 'Alignment',
+				name: 'align',
+				type: 'listbox',
+				text: 'None',
+				values: [
+					{text: 'None', value: ''},
+					{text: 'Left', value: 'left'},
+					{text: 'Center', value: 'center'},
+					{text: 'Right', value: 'right'}
+				]
+			});
+		}
 
 		generalFormItems.push(classListCtrl);
 
@@ -529,7 +560,16 @@ tinymce.PluginManager.add('image', function(editor) {
 					data.border = removePixelSuffix(imgElm.style.borderWidth);
 				}
 
-				data.style = editor.dom.serializeStyle(editor.dom.parseStyle(editor.dom.getAttrib(imgElm, 'style')));
+				var css = editor.dom.parseStyle(editor.dom.getAttrib(imgElm, 'style'));
+
+				if (imageAlignment) {
+					if (css.float !== null) {
+						data.align = css.float;
+						delete css.float;
+					}
+				}
+
+				data.style = editor.dom.serializeStyle(css);
 			}
 
 			// Advanced dialog shows general+advanced tabs
