@@ -194,7 +194,11 @@ tinymce.PluginManager.add('image', function(editor) {
 
 			// if ar1onclick is true, add to image onclock event
 			if (needOnClick) {
-				data.style = "cursor:pointer";
+				if (data.style !== null) {
+					data.style = "cursor:pointer;" + data.style;
+				} else {
+					data.style = "cursor:pointer;";
+				}
 				data.mce_onclick = "window.open('" + fullImage + "', '_self' );";
 			} else {
 				data.mce_onclick = '';
