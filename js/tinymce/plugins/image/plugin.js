@@ -168,20 +168,17 @@ tinymce.PluginManager.add('image', function(editor) {
 
 			var embedInTable = data.ar1table;
 			var needOnClick = data.ar1onclick;
-			var fullImage = data.src.replace("_150.", ".").replace(/\.ashx.*$/, "");
+			var fullImage = data.src.replace(/\.ashx.*$/, "").replace("_" + removePixelSuffix(data.width) + ".", ".");
 
-			// strip image _150 size and replace with .ashx
-			if (needOnClick && data.src) {
-				if (data.width === '') {
-					data.src = fullImage + ".ashx?width=150";
-				} else {
-					data.src = fullImage + ".ashx?width=" + removePixelSuffix(data.width);
-				}
-			} else {
-				if (data.width !== '') {
-					data.src = fullImage + ".ashx?width=" + removePixelSuffix(data.width);
-				}
-			}
+			//// strip image _150 size and replace with .ashx
+			//if (needOnClick && data.src) {
+			//	fullImage = fullImage.replace("_150.", ".");
+			//	data.src = fullImage + ".ashx?width=150";
+			//} else {
+			//	if (data.width !== '') {
+			//		data.src = fullImage + ".ashx?width=" + removePixelSuffix(data.width);
+			//	}
+			//}
 
 			// Setup new data excluding style properties
 			/*eslint dot-notation: 0*/
@@ -222,8 +219,7 @@ tinymce.PluginManager.add('image', function(editor) {
 						cellSpacing:0,
 						cellPadding:0,
 						borderColor:'black',
-						bgColor:'black',
-						width:150
+						bgColor:'black'
 					});
 					var imgTableBody = dom.add(imgTable, 'tbody');
 					var imgTableTr = dom.add(imgTableBody, 'tr');
@@ -231,10 +227,11 @@ tinymce.PluginManager.add('image', function(editor) {
 
 					var image_data = data;
 					image_data = tinymce.extend(image_data, {
-						src: data.src + ".ashx?width=150",
+						src:data.src,
 						border:0,
 						hspace:0,
-						width:150
+						width:data.width,
+						height:data.height
 					});
 
 					dom.add(imgTableTd, 'img', image_data);
