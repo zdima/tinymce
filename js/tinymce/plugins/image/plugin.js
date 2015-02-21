@@ -168,6 +168,7 @@ tinymce.PluginManager.add('image', function(editor) {
 
 			var embedInTable = data.ar1table;
 			var needOnClick = data.ar1onclick;
+			var tblAlign = data.tblAlign;
 			var fullImage = data.src.replace(/\.ashx.*$/, "").replace("_" + removePixelSuffix(data.width) + ".", ".");
 
 			//// strip image _150 size and replace with .ashx
@@ -212,15 +213,20 @@ tinymce.PluginManager.add('image', function(editor) {
 
 				// if ar1table is true, embed into table
 				if (embedInTable) {
-					var imgTable = dom.create('table', {
+					var imgTableInfo = {
 						id: '__mcenew',
 						"class":"picturecaption",
 						border:0,
 						cellSpacing:0,
 						cellPadding:0,
 						borderColor:'black',
-						bgColor:'black'
-					});
+						bgColor:'black',
+						width:data.width
+					};
+					if (tblAlign !== "none") {
+						tinymce.extend(imgTableInfo, {align: tblAlign});
+					}
+					var imgTable = dom.create('table', imgTableInfo);
 					var imgTableBody = dom.add(imgTable, 'tbody');
 					var imgTableTr = dom.add(imgTableBody, 'tr');
 					var imgTableTd = dom.add(imgTableTr, 'td');
@@ -572,11 +578,10 @@ tinymce.PluginManager.add('image', function(editor) {
 						pack: 'start',
 						items: [
 							{
-								name: 'ar1table',
+								name: 'ar1onclick',
 								type: 'checkbox',
-								checked: bAR1Enabled,
-								disabled: !bAR1Enabled,
-								text: 'Embed into table'
+								checked: bAR1onclick,
+								text: 'Open on click'
 							},
 							{
 								type: 'form',
@@ -587,10 +592,24 @@ tinymce.PluginManager.add('image', function(editor) {
 								alignH: ['left', 'right'],
 								items: [
 									{
-										name: 'ar1onclick',
+										name: 'ar1table',
 										type: 'checkbox',
-										checked: bAR1onclick,
-										text: 'Open on click'
+										checked: bAR1Enabled,
+										disabled: !bAR1Enabled,
+										text: 'Embed into table'
+									},
+									{
+										label: 'Table Alignment',
+										name: 'tblAlign',
+										disabled: !bAR1Enabled,
+										type: 'listbox',
+										text: 'Right',
+										values: [
+											{text: 'None', value: ''},
+											{text: 'Left', value: 'left'},
+											{text: 'Center', value: 'center'},
+											{text: 'Right', value: 'right'}
+										]
 									}
 								]
 							}
