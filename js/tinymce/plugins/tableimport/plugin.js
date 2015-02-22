@@ -22,14 +22,14 @@ tinymce.PluginManager.add('tableimport', function(editor) {
 			var domTable, text, $ = editor.getWin().parent.jQuery;
 			var data = win.toJSON();
 			var delimiter = '|';
-			
+
 			if (data !== null) {
 				delimiter = data.delimiterType;
 				if (delimiter == '?') {
 					delimiter = data.delimCustomValue;
 				}
 			}
-			
+
 			text = editor.selection.getContent();
 			// remove any other tags
 			text = text.replace(/<(\/)*(span|font)(.*?)>/ig , '');
@@ -50,7 +50,7 @@ tinymce.PluginManager.add('tableimport', function(editor) {
 			// convert each line into row
 			text.split('\n').forEach(function (line) {
 				line = line.replace(/^\s*/g, '').replace(/\s*$/g, '');
-				if(line !== "") {
+				if (line !== "") {
 					// create row element
 					var row = $('<tr></tr>');
 					// make sure here is no other tags
@@ -133,35 +133,35 @@ tinymce.PluginManager.add('tableimport', function(editor) {
 		function onSubmitForm() {
 			var domTable, text, $ = editor.getWin().parent.jQuery;
 			var data = win.toJSON(), dom = editor.dom, selectedElement;
-			var delimiter = '|';
-			
+			var delimiter = '|', rowIdx, cellIdx;
+
 			if (data !== null) {
 				delimiter = data.delimiterType;
 				if (delimiter == '?') {
 					delimiter = data.delimCustomValue;
 				}
 			}
-			
+
 			text = "";
 			selectedElement = editor.selection.getNode();
 			domTable = dom.getParent(selectedElement, 'table');
-			for( rowIdx = 0; rowIdx < domTable.rows.length; rowIdx++ ) {
-				for( cellIdx = 0; cellIdx < domTable.rows[rowIdx].cells.length; cellIdx++ ) {
-					if(cellIdx>0) {
+			for (rowIdx = 0; rowIdx < domTable.rows.length; rowIdx++) {
+				for (cellIdx = 0; cellIdx < domTable.rows[rowIdx].cells.length; cellIdx++) {
+					if (cellIdx > 0) {
 						text = text + delimiter;
 					}
 					text = text + domTable.rows[rowIdx].cells[cellIdx].innerText;
 				}
 				text = text + "<br />";
 			}
-			
-			// replace entire table with new text
+
+            // replace entire table with new text
 			var rng = dom.createRng();
 			rng.setStartBefore(domTable);
 			rng.setEndAfter(domTable);
-			
+
 			editor.selection.setRng(rng);
-			editor.selection.setContent( $('<p>' + text + '</p>').html());
+			editor.selection.setContent($('<p>' + text + '</p>').html());
 		}
 
 		// when delimiter selected we might need enable text field to use custom delimiter
