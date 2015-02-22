@@ -348,6 +348,13 @@ tinymce.PluginManager.add('image', function(editor) {
 			bAR1Enabled = true;
 			bAR1onclick = true;
 		}
+		if (bAR1Enabled) {
+			tinymce.extend(data, {
+				ar1table: bAR1Enabled,
+				ar1onclick: bAR1onclick,
+				tblAlign: 'right'
+			});
+		}
 
 		if (imageList) {
 			imageListCtrl = {
