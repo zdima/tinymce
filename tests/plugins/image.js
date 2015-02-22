@@ -65,7 +65,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img src="src" alt="alt" width="200" height="100" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" width=\"200\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;" src="src" alt="alt" width="200" height="100" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 	});
 
@@ -86,7 +86,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img src="src" alt="alt" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img style=\"cursor: pointer;\" src=\"src\" alt=\"alt\" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 	});
 
@@ -124,7 +124,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img class="class1" src="src" alt="alt" width="100" height="200" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" width=\"100\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img class=\"class1\" style=\"cursor: pointer;\" src=\"src\" alt=\"alt\" width=\"100\" height=\"200\" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 	});
 
@@ -152,7 +152,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img src="' + editor.settings.document_base_url + 'src" alt="alt" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img style=\"cursor: pointer;\" src="' + editor.settings.document_base_url + 'src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 
@@ -182,7 +182,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img src="' + editor.settings.document_base_url + 'src" alt="alt" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img style=\"cursor: pointer;\" src="' + editor.settings.document_base_url + 'src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 
@@ -203,7 +203,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -215,7 +215,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;border-width: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img style=\"cursor: pointer;border-width: 10px;\" src=\"src\" alt=\"alt\" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -235,7 +235,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -248,7 +248,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;margin: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img style=\"cursor: pointer;margin: 10px;\" src=\"src\" alt=\"alt\" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -268,7 +268,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -280,7 +280,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;border-width: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img style=\"cursor: pointer;border-width: 10px;\" src=\"src\" alt=\"alt\" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -300,7 +300,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -312,7 +312,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;margin: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img style=\"cursor: pointer;margin: 10px;\" src=\"src\" alt=\"alt\" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -332,7 +332,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -345,7 +345,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;border-width: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img style=\"cursor: pointer;border-width: 10px;\" src=\"src\" alt=\"alt\" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -365,7 +365,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -376,13 +376,13 @@
 			"hspace": "10",
 			"src": "src",
 			"style": "margin-left: 15px; margin-top: 20px;",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": "10"
 		});
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;margin: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" align=\"right\" bgcolor=\"black\"><tbody><tr><td><img style=\"cursor: pointer;margin: 10px;\" src=\"src\" alt=\"alt\" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -402,7 +402,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -416,7 +416,7 @@
 			"hspace": "15",
 			"src": "",
 			"style": "margin-left: 15px; margin-right: 15px;",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -437,7 +437,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -451,7 +451,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "margin-top: 15px; margin-bottom: 15px;",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": "15"
 		});
 
@@ -472,7 +472,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -486,7 +486,7 @@
 			"hspace": "5",
 			"src": "",
 			"style": "margin: 5px;",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": "5"
 		});
 
@@ -507,7 +507,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -521,7 +521,7 @@
 			"hspace": "10",
 			"src": "",
 			"style": "margin: 5px 10px 5px 10px;",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": "5"
 		});
 
@@ -542,7 +542,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -556,7 +556,7 @@
 			"hspace": "10",
 			"src": "",
 			"style": "margin: 5px 10px 5px 10px;",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": "5"
 		});
 
@@ -577,7 +577,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -591,7 +591,7 @@
 			"hspace": "10",
 			"src": "",
 			"style": "margin: 5px 10px 15px 10px;",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -612,7 +612,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -626,7 +626,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "margin: 5px 10px 15px 20px;",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -647,7 +647,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": ""
 		});
 
@@ -661,7 +661,7 @@
 			"hspace": "",
 			"src": "",
 			"style": "margin: 15px 10px 15px 20px;",
-			"tblAlign": "",
+			"tblAlign": "right",
 			"vspace": "15"
 		});
 
