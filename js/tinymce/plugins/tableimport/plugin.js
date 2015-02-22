@@ -32,7 +32,7 @@ tinymce.PluginManager.add('tableimport', function(editor) {
 
 			text = editor.selection.getContent();
 			// remove any other tags
-			text = text.replace(/<(\/)*(span|font)(.*?)>/ig , '');
+			text = text.replace(/<(\/)*(span|font|img|a)(.*?)>/ig , '');
 			// remove <p>
 			text = text.replace(/<p[^>]*>/ig, '');
 			// convert <p></p> and <br*> to new-line
