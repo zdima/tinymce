@@ -197,10 +197,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -212,7 +215,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img style="border-width: 10px;" src="src" alt="alt" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;border-width: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -226,10 +229,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -242,7 +248,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img style="margin: 10px;" src="src" alt="alt" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;margin: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -256,10 +262,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -271,7 +280,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img style="border-width: 10px;" src="src" alt="alt" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;border-width: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -285,10 +294,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -300,7 +312,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img style="margin: 10px;" src="src" alt="alt" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;margin: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -314,10 +326,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -330,7 +345,7 @@
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img style="border-width: 10px;" src="src" alt="alt" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;border-width: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -344,24 +359,30 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
 		fillAndSubmitWindowForm({
 			"alt": "alt",
+			"ar1onclick": true,
+			"ar1table": true,
 			"hspace": "10",
 			"src": "src",
 			"style": "margin-left: 15px; margin-top: 20px;",
+			"tblAlign": "",
 			"vspace": "10"
 		});
 
 		equal(
 			cleanHtml(editor.getContent()),
-			'<p><img style="margin: 10px;" src="src" alt="alt" /></p>'
+			'<table class=\"picturecaption\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"black\"><tbody><tr><td><img style="cursor: pointer;margin: 10px;" src="src" alt="alt" border=\"0\" hspace=\"0\" /></td></tr><tr><td>alt</td></tr></tbody></table>'
 		);
 
 	});
@@ -375,10 +396,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -386,10 +410,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "15",
 			"src": "",
 			"style": "margin-left: 15px; margin-right: 15px;",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -404,10 +431,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -415,10 +445,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "margin-top: 15px; margin-bottom: 15px;",
+			"tblAlign": "",
 			"vspace": "15"
 		});
 
@@ -433,10 +466,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -444,10 +480,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "5",
 			"src": "",
 			"style": "margin: 5px;",
+			"tblAlign": "",
 			"vspace": "5"
 		});
 
@@ -462,10 +501,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -473,10 +515,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "10",
 			"src": "",
 			"style": "margin: 5px 10px 5px 10px;",
+			"tblAlign": "",
 			"vspace": "5"
 		});
 
@@ -491,10 +536,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -502,10 +550,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "10",
 			"src": "",
 			"style": "margin: 5px 10px 5px 10px;",
+			"tblAlign": "",
 			"vspace": "5"
 		});
 
@@ -520,10 +571,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -531,10 +585,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "10",
 			"src": "",
 			"style": "margin: 5px 10px 15px 10px;",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -549,10 +606,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -560,10 +620,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "margin: 5px 10px 15px 20px;",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -578,10 +641,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "",
+			"tblAlign": "",
 			"vspace": ""
 		});
 
@@ -589,10 +655,13 @@
 
 		deepEqual(Utils.getFontmostWindow().toJSON(), {
 			"alt": "",
+			"ar1onclick": true,
+			"ar1table": true,
 			"border": "",
 			"hspace": "",
 			"src": "",
 			"style": "margin: 15px 10px 15px 20px;",
+			"tblAlign": "",
 			"vspace": "15"
 		});
 
