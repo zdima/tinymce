@@ -131,6 +131,15 @@ tinymce.PluginManager.add('tableimport', function(editor) {
 				delimiterType: '|'
 			};
 
+		var domTable = editor.selection.getNode();
+		if (domTable.nodeName !== 'table') {
+			domTable = editor.dom.getParent(domTable, 'table');
+		}
+		if (domTable === null) {
+			editor.windowManager.alert("Table or table element must be selected");
+			return;
+		}
+
 		function onSubmitForm() {
 			var domTable, text, $ = editor.getWin().parent.jQuery;
 			var data = win.toJSON(), dom = editor.dom, selectedElement;
