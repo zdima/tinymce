@@ -67,6 +67,7 @@ tinymce.PluginManager.add('tableimport', function(editor) {
 			// replace selection with table
 			// wrap into div to be able capute the <table> tag
 			editor.selection.setContent(domTable.clone().wrap('<div></div>').parent().html());
+			editor.nodeChanged();
 		}
 
 		// when delimiter selected we might need enable text field to use custom delimiter
@@ -162,6 +163,7 @@ tinymce.PluginManager.add('tableimport', function(editor) {
 
 			editor.selection.setRng(rng);
 			editor.selection.setContent($('<p>' + text + '</p>').html());
+			editor.nodeChanged();
 		}
 
 		// when delimiter selected we might need enable text field to use custom delimiter
